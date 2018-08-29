@@ -39,6 +39,10 @@ public class Partida {
 	}
 
 	public String relatorioTurno() {
+		if (proximoTile == null) {
+			estadoDaPartida = Estado.PARTIDA_FINALIZADA;
+			throw new ExcecaoJogo("Partida finalizada");
+		}
 		Jogador proximoJogador = jogador[indiceJogadorVez % jogador.length];
 		String relatorio = "Jogador: " + proximoJogador.getCor() + "\nTile: " + proximoTile + "\nStatus: "
 				+ estadoDoTurno;
@@ -52,11 +56,14 @@ public class Partida {
 
 	private void pegarProximoTile() {
 		proximoTile = tiles.pegar();
-		proximoTile.reset();
+		if (proximoTile != null) {
+			proximoTile.reset();
+		}
 	}
 
 	public Partida finalizarTurno() {
 		pegarProximoTile();
+		estadoDaPartida = Estado.PARTIDA_FINALIZADA;
 		return this;
 	}
 
