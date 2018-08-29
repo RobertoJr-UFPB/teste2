@@ -67,6 +67,7 @@ public class Partida {
 
 	public Partida finalizarTurno() {
 		pegarProximoTile();
+		indiceJogadorVez++;
 		estadoDoTurno = Estado.TURNO_INICIO;
 		if (proximoTile == null) {
 			estadoDaPartida = Estado.PARTIDA_FINALIZADA;
