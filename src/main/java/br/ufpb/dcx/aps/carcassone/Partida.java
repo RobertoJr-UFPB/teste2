@@ -23,7 +23,8 @@ public class Partida {
 		}
 		estadoDaPartida = Estado.PARTIDA_ANDAMENTO;
 		tabuleiro.adicionarPrimeiroTile(proximoTile);
-
+		
+		
 	}
 
 	public String relatorioPartida() {
@@ -50,6 +51,9 @@ public class Partida {
 	}
 
 	public Partida girarTile() {
+		if (estadoDoTurno == Estado.TILE_POSICIONADO) {
+			throw new ExcecaoJogo("Não pode girar tile já posicionado");
+		}
 		proximoTile.girar();
 		return this;
 	}
@@ -63,7 +67,10 @@ public class Partida {
 
 	public Partida finalizarTurno() {
 		pegarProximoTile();
-		estadoDaPartida = Estado.PARTIDA_FINALIZADA;
+		estadoDoTurno = Estado.TURNO_INICIO;
+		if (proximoTile == null) {
+			estadoDaPartida = Estado.PARTIDA_FINALIZADA;
+		}
 		return this;
 	}
 
