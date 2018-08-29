@@ -25,6 +25,8 @@ public class Partida {
 		tabuleiro.adicionarPrimeiroTile(proximoTile);
 		
 		
+		
+		
 	}
 
 	public String relatorioPartida() {
@@ -84,6 +86,7 @@ public class Partida {
 			throw new ExcecaoJogo("Não pode reposicionar tile já posicionado");
 		}
 		tabuleiro.posicionar(tileReferencia, ladoTileReferencia, proximoTile);
+		estadoDoTurno = Estado.TILE_POSICIONADO;
 		return this;
 	}
 
