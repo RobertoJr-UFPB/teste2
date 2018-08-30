@@ -1,6 +1,7 @@
 package br.ufpb.dcx.aps.carcassone;
 
 public class Jogador {
+	// Classe que guarda a pontuação do jogador a cor que ele tem e quantos empeles ele  ainda tem 
 	private Cor corDoJogador;
 	private int pontosDoJogador = 0;
 	private int meeplesDoJogador = 7;
